@@ -844,9 +844,12 @@ function renderQuestion() {
     const modeTitle = isReviewMode ? "오답 복습" : "전체 풀기";
     const statusHtml = `<span style="font-size: 0.95em; color: #7f8c8d; font-weight: bold; background: #e8f4f8; padding: 5px 10px; border-radius: 5px;">${modeTitle} : ${currentIdx + 1} / ${qList.length}문항</span>`;
     
-    // 문제 내에 그림이 있을 경우 표시하는 코드
-const imgPath = q.img ? `./images/${q.img}` : '';
-const imgHtml = imgPath ? `<img src="${imgPath}" style="width:300px; height:200px; object-fit: contain; display:block; margin:10px auto; border: 1px solid #ddd; border-radius: 8px; background-color: #fff;">` : '';
+// 문제 내에 그림이 있을 경우 표시하는 코드 (모바일 완벽 호환 버전)
+// 💡 아래 주소에서 본인_깃허브_아이디와 저장소_이름을 꼭 실제 이름으로 변경해 주세요!
+const githubUrl = "https://raw.githubusercontent.com/Greex-kr/electric-quiz/main/images/";
+
+const imgPath = q.img ? `${githubUrl}${q.img}` : '';
+const imgHtml = imgPath ? `<img src="${imgPath}" style="width:100%; max-width:300px; height:auto; object-fit: contain; display:block; margin:10px auto; border: 1px solid #ddd; border-radius: 8px; background-color: #fff;">` : '';
 	
     const html = `
         <div class="question-card">
